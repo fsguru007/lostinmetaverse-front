@@ -541,7 +541,7 @@ section.mint-buy{color: #fff;margin-bottom: 40%;}
 
 
 /* roadmap.html  */
-section.roadmap{margin-top: 40%;margin-bottom: 20%;position: relative;}
+section.roadmap{margin-top: 120px;margin-bottom: 20%;position: relative;}
 .roadmap-heading {color: #fff; text-align: center; margin-bottom: 50px;}
 .roadmap-heading h3{font-size: 40px;}
 
@@ -649,7 +649,7 @@ footer p, footer a{
     font-family: 'Montserrat-Regular' !important;
     color: #fff;
     opacity: 0.4;
-    width: 50%;
+    max-width: 700px;
     margin: auto;
 }
 footer a:hover{

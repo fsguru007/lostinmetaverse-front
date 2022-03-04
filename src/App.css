@@ -76,3 +76,11 @@
 button:not([disabled]) {
   cursor: pointer;
 }
+
+.slick-slider {
+  margin-top: 30px;
+}
+
+.slick-slide .s-card {
+  padding: 10px;
+}

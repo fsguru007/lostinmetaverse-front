@@ -1,13 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Footer } from '../components/footer'
+
+const STARTTIME = new Date('2022-03-22T00:00:00').getTime();
+
+const formatLeftTime = ts => {
+    const days = Math.floor(ts / 86400);
+    const hours = Math.floor((ts % 86400) / 3600);
+    const minutes = Math.floor((ts % 3600) / 60);
+    const seconds = ts % 60;
+
+    return `${days} : ${hours<10?'0':''}${hours} : ${minutes<10?'0':''}${minutes} : ${seconds<10?'0':''}${seconds}`;
+}
 
 const Mint = () => {
+
+    const [timeLeft, setTimeLeft] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(
+            () => {
+                const now = new Date().getTime();
+                if (now < STARTTIME) {
+                    setTimeLeft(Math.floor((STARTTIME - now) / 1000));
+                }
+            }, 1000
+        );
+
+        return ()=>clearInterval(timer);
+    }, []);
+
     return (
         <div>
             <section id="login-reg">
                 <div className="overlay pb-120">
                     <div className="container">
-                        <div className="top-area">
+                        <div className="top-area mb-5">
                             <div className="row d-flex align-items-center">
                                 <div className="col-sm-5 col">
                                     <Link to="/">
@@ -18,15 +46,20 @@ const Mint = () => {
                                     </Link>
                                 </div>
                                 <div className="col-sm-5 col">
-                                    <a id="joerichards_connect_wallet" href="#" className="joerichards_show_on_desktop cmn-btn">Installing...</a>
+                                    <a id="joerichards_connect_wallet" href="#" className="joerichards_show_on_desktop cmn-btn mr-2">Installing...</a>
                                     <a id="joerichards_mobile_connect_wallet" href="#" className="joerichards_hide_on_desktop cmn-btn">Connect Wallet</a>
                                 </div>
                             </div>
                         </div>
-                        <div className="row pt-120 d-flex justify-content-center">
+                        {timeLeft > 0 && <h3 className='text-center text-white mt-5 pt-5' >
+                            Minting will start in<br/>
+                            {formatLeftTime(timeLeft)}
+                        </h3>}
+
+                        <div className="row pt-5 d-flex justify-content-center">
                             <div className="col-lg-6">
                                 <div className="login-reg-main text-center">
-                                    <h4>Mint your RMRs</h4>
+                                    <h4>Mint your NFT</h4>
                                     <div className="form-area">
                                         <form action="#">
                                             <div className="form-group">
@@ -38,8 +71,10 @@ const Mint = () => {
                                                 <input id="joerichards_mint_amount" style={{ textAlign: 'center', maxWidth: '150px' }} placeholder="Amount" type="text" defaultValue={2} />
                                             </div>
                                             <div className="form-group recover pt-4">
-                                                <p style={{ textAlign: 'center' }}>Price ------ 0.051 ETH</p>
-                                                <p style={{ textAlign: 'center', fontWeight: 'bold' }}>Total ------ <span id="joerichards_total_amount">0.102</span> ETH</p>
+                                                <p style={{ textAlign: 'center' }}>Price ----------- 0.11 ETH</p>
+                                                {/* <p style={{ textAlign: 'center', fontWeight: 'bold' }}>Total --------- <span id="joerichards_total_amount">0.102</span> ETH</p> */}
+                                                <p style={{ textAlign: 'center', fontWeight: 'bold' }}>Total NFTs ------- <span id="joerichards_total_amount">3</span> ETH</p>
+                                                <p style={{ textAlign: 'center', fontWeight: 'bold' }}>Total Cost --- <span id="joerichards_total_amount">0.22</span> ETH</p>
                                             </div>
                                             <div className="form-group pt-4">
                                                 <button id="joerichards_mint_button" type="submit" className="cmn-btn">Mint 2 get 1 FREE</button>
@@ -68,6 +103,23 @@ const Mint = () => {
                     </div>
                 </div>
             </section>
+
+            <section className='text-white text-center mb-6 mx-auto' style={{maxWidth:'800px'}} >
+                <div className='container'>
+                    <h2 className='mb-4' >
+                    Free Royalty NFT Minting Conditions:
+                    </h2>
+                    <p>
+                        #1 Wallet Holds 3 OR More NFTs from LITM Collection* <br/>
+                        #2 Wallet HOLDS NFTs From Collection Containing All 3 Characters* 
+                    </p>
+                    <p>
+                    * NFTS THAT HAVE NOT BEEN USED PREVIOUSLY TO MINT ROYALTY NFT NFTs need extra Attribute Category which changes when the token is used to Mint a Free Royalty NFT. <br/>i.e. Attribute: Can Mint Royalty NFT, YES or NO
+                    </p>
+                </div>
+            </section>
+
+            <Footer />
         </div>
     )
 }
