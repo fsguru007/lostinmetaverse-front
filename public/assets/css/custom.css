@@ -940,7 +940,7 @@ p.info {
   }
 .some-art-work .next:hover,.some-art-work  .prev:hover { color: #000; }
 .some-art-work .next:active,.some-art-work .prev:active {
-    top: 104px;
+    top: 204px;
     box-shadow: 0 1px 0 #67003c;
   }
 .some-art-work .next { right: 5em; margin: 200px 0; }

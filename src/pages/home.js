@@ -3,7 +3,7 @@ import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { VideoAnim } from '../components/videoAnim';
-import Navbar from './navbar';
+import Navbar from '../components/navbar';
 import { SocialIcons } from '../components/social';
 
 const Home = () => {

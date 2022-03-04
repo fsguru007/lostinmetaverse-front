@@ -17,15 +17,18 @@ const Navbar = () => {
         <>
             <header>
                 <nav id='cssmenu' className="container">
-                    <div className="logo"><a href=""><img src={process.env.PUBLIC_URL + '/assets/images/logo.png'} alt="logo" /></a></div>
+                    <div className="logo">
+                        <Link to='/' >
+                            <img src={process.env.PUBLIC_URL + '/assets/images/logo.png'} alt="logo" />
+                        </Link>
+                    </div>
                     <div id="head-mobile"></div>
                     <div className="button"></div>
                     <ul className="hdr-menu">
                         <li class='active'>
-                            <Link to="/home">
+                            <Link to="/">
                                 HOME
                             </Link>
-
                         </li>
                         <li>
                             <Link className='text-white' to="/mint">
@@ -44,7 +47,7 @@ const Navbar = () => {
                         </li>
                         <li><button type="button" className="connect-btn" onClick={handleShow} >CONNECT WALLET</button></li>
                         <li>
-                            <Link className='text-white connect-btn' to="/login">
+                            <Link className='text-white connect-btn ml-2' to="/login">
                                 <FontAwesomeIcon icon={faUser} />
                             </Link>
                         </li>

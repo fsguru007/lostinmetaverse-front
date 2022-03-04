@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { SocialIcons } from '../components/social'
-import Navbar from './navbar'
+import Navbar from '../components/navbar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const Roadmap = () => {
     return (
@@ -49,7 +51,7 @@ const Roadmap = () => {
                                 NFT Collectible
                             </h2>
                             <Link to='/mint' className="connect-btn connect-btn-2">
-                                Mint Now<i className="fa fa-long-arrow-right"></i>
+                                Mint Now <FontAwesomeIcon icon={faLongArrowRight} />
                             </Link>
                         </div>
                         <SocialIcons />

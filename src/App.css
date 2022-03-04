@@ -73,3 +73,6 @@
   margin-top: 50vh !important;
   transform: translateY(-50%) !important;
 }
+button:not([disabled]) {
+  cursor: pointer;
+}
