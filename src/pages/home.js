@@ -203,9 +203,9 @@ const Home = () => {
             </div>
             <div className="container">
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-9">
                   <div className="art-img">
-                    <VideoAnim src='/assets/images/art-4.mp4' />
+                    <VideoAnim style={{maxWidth:'752px',width:'100%'}} src='/assets/images/art-4.mp4' />
                   </div>
                 </div>
                 <div className="col-md-12">
