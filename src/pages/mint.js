@@ -106,15 +106,15 @@ const Mint = () => {
 
             <section className='text-white text-center mb-6 mx-auto' style={{maxWidth:'800px'}} >
                 <div className='container'>
+                    <div className='mb-4'>
+                        <button id="royalty_mint_button" className="cmn-btn">CLAIM YOUR FREE ROYALTY NFT</button>
+                    </div>
                     <h2 className='mb-4' >
                     Free Royalty NFT Minting Conditions:
                     </h2>
                     <p>
                         #1 Wallet Holds 3 OR More NFTs from LITM Collection* <br/>
                         #2 Wallet HOLDS NFTs From Collection Containing All 3 Characters* 
-                    </p>
-                    <p>
-                    * NFTS THAT HAVE NOT BEEN USED PREVIOUSLY TO MINT ROYALTY NFT NFTs need extra Attribute Category which changes when the token is used to Mint a Free Royalty NFT. <br/>i.e. Attribute: Can Mint Royalty NFT, YES or NO
                     </p>
                 </div>
             </section>

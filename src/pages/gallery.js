@@ -7,6 +7,8 @@ import Navbar from '../components/navbar'
 // import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 
+const SLIDERS = Array(96).fill(0).map((_, id)=>(id+1));
+
 const Gallery = () => {
     const settings = {
         dots: true,
@@ -15,6 +17,8 @@ const Gallery = () => {
         slidesToShow: 5,
         slidesToScroll: 5
     };
+
+    console.log(SLIDERS)
 
     return (
         <div>
@@ -69,62 +73,15 @@ const Gallery = () => {
                     </div>
                     <div className="container">
                         <Slider {...settings} >
-                            <div className="item">
-                                <div className="s-card">
-                                    <div className="s-img">
-                                        <img src="./assets/images/slider-img1.png" alt="img" />
+                            {
+                                SLIDERS.map((i, id) => <div className="item" key={`slider-${i}`} >
+                                    <div className="s-card">
+                                        <div className="s-img">
+                                            <img src={`./assets/images/gallery/slider-img-${i}.jpg`} alt="img" />
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="s-card">
-                                    <div className="s-img">
-                                        <img src="./assets/images/slider-img2.png" alt="img" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="s-card">
-                                    <div className="s-img">
-                                        <img src="./assets/images/slider-img3.png" alt="img" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="s-card">
-                                    <div className="s-img">
-                                        <img src="./assets/images/slider-img4.png" alt="img" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="s-card">
-                                    <div className="s-img">
-                                        <img src="./assets/images/slider-img5.png" alt="img" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="s-card">
-                                    <div className="s-img">
-                                        <img src="./assets/images/slider-img3.png" alt="img" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="s-card">
-                                    <div className="s-img">
-                                        <img src="./assets/images/slider-img1.png" alt="img" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="s-card">
-                                    <div className="s-img">
-                                        <img src="./assets/images/slider-img5.png" alt="img" />
-                                    </div>
-                                </div>
-                            </div>
+                                </div>)
+                            }
                         </Slider>
                     </div>
                 </section>

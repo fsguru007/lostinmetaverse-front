@@ -212,7 +212,7 @@ const Home = () => {
                   <div className="apedad-cont">
                     <h3>Sharing Creator Royalties With Collectors!</h3>
                     <h6>
-                      100% of All Lost In The Metaverse Creator Royalty Fees Are SHARED EQUALLY between holders of Royalty NFTs!
+                      100% of All ApeDad 2662: Lost In The Metaverse Creator Royalty Fees Are SHARED EQUALLY between holders of Royalty NFTs!
                     </h6>
                     <h6>
                       COLLECT ALL 3 APEDAD 2662 CHARACTERS & CLAIM YOUR FREE ROYALTY NFT!
@@ -234,7 +234,7 @@ const Home = () => {
                     </p>
                     <p>Once a Royalty NFT has been minted,<br/>
                     Income Will Passively Accumulate<br/>
-                      &amp; May Be Changed At Any Time
+                      &amp; May Be Claimed At Any Time
                     </p>
                   </div>
                 </div>

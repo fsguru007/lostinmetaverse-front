@@ -92,9 +92,7 @@ const Roadmap = () => {
                                 <div className="col-md-5">
                                     <div className="patter-card-2">
                                         <p>VIP PRESALE ACCESS</p>
-                                        <a href="#">All Collectors Will Get Pre-Sale Early
-                                            Access to Pre-Sale Minting of Future
-                                            Projects By BlockVision Creative</a>
+                                        <a href="#">All Collectors Will Get Early Access to Minting of Future Projects By BlockVision Creative</a>
                                         <p>September 2022</p>
                                     </div>
                                 </div>
@@ -109,7 +107,7 @@ const Roadmap = () => {
                                 <div className="col-md-2" />
                                 <div className="col-md-5">
                                     <div className="pattern-card">
-                                        <a href="#">Live Dinner &amp; Cocktail Mixer Events For All Lost In The Metaverse</a>
+                                        <a href="#">Live Dinner &amp; Cocktail Mixer Events For All ApeDad 2662: Lost In The Metaverse Collectors</a>
                                         <p>Summer 2023</p>
                                     </div>
                                 </div>
