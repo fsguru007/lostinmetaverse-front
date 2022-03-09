@@ -9,18 +9,21 @@ import Mint from '../pages/mint';
 import Roadmap from '../pages/roadmap';
 import Gallery from '../pages/gallery';
 import Login from '../pages/login';
+import ScrollToTop from '../scrollTop';
 
 const Routing = () => {
     return (
         <Router>
-            <Routes>
-                <Route exact path="/" element={<Home />} />
-                <Route exact path="*" element={<Home />} />
-                <Route exact path="/mint" element={<Mint />} />
-                <Route exact path="/roadmap" element={<Roadmap />} />
-                <Route exact path="/gallery" element={<Gallery />} />
-                <Route exact path="/login" element={<Login />} />
-            </Routes>
+            <ScrollToTop>
+                <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route exact path="*" element={<Home />} />
+                    <Route exact path="/mint" element={<Mint />} />
+                    <Route exact path="/roadmap" element={<Roadmap />} />
+                    <Route exact path="/gallery" element={<Gallery />} />
+                    <Route exact path="/login" element={<Login />} />
+                </Routes>
+            </ScrollToTop>
         </Router>
     )
 }

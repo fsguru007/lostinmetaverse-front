@@ -64,7 +64,7 @@ const Gallery = () => {
                         <div className="row">
                             <div className="col-md-8">
                                 <div className="">
-                                    <h3>100% unique, 100% hand-made!</h3>
+                                    {/* <h3>100% unique, 100% hand-made!</h3> */}
                                 </div>
                             </div>
                             <div className="col-md-4">

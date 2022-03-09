@@ -120,7 +120,7 @@ const Home = () => {
             <div className="col-md-12">
               <div className="art-work-desc">
                 <p>Unfortunately for 2662, the gorilla soldier drones did not have their phaser frequencies set for time
-                  travel to ancient Egypt, but for dematerialization. As the quantum vortex emitted by the phasers enveloped
+                  travel to ancient Egypt, but for dematerialization. As the quantum radiation emitted by the phasers enveloped
                   2662, he suddenly found himself spiraling through a neon vortex that rapidly began merging his molecules
                   with the fabric of the Metaverse.</p>
               </div>

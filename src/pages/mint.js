@@ -80,19 +80,19 @@ const Mint = () => {
                                                 <button id="joerichards_mint_button" type="submit" className="cmn-btn">Mint 2 get 1 FREE</button>
                                             </div>
                                         </form>
-                                        <div className="or">
+                                        {/* <div className="or">
                                             <p>OR</p>
                                         </div>
                                         <div className="sign-in">
                                             <p>Mint with Credit Card</p>
-                                        </div>
-                                        <div className="reg-with">
+                                        </div> */}
+                                        {/* <div className="reg-with">
                                             <div className="social-area d-flex justify-content-center">
                                                 <a className="master checkout-button" href="#"><img src="./assets/images/mc_symbol.svg" alt="image" /></a>
                                                 <a className="visa checkout-button" href="#"><img src="./assets/images/Visa_Brandmark_White_RGB_2021.png" alt="image" /></a>
                                                 <a className="amex checkout-button" href="#"><img src="./assets/images/amex.png" alt="image" /></a>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className="account">
                                             <p id="txStatus" style={{ fontSize: '14px' }}>PS: Gas fee is cheaper if you mint many at once!</p>
                                         </div>
@@ -106,16 +106,61 @@ const Mint = () => {
 
             <section className='text-white text-center mb-6 mx-auto' style={{maxWidth:'800px'}} >
                 <div className='container'>
-                    <div className='mb-4'>
-                        <button id="royalty_mint_button" className="cmn-btn">CLAIM YOUR FREE ROYALTY NFT</button>
-                    </div>
                     <h2 className='mb-4' >
                     Free Royalty NFT Minting Conditions:
                     </h2>
                     <p>
-                        #1 Wallet Holds 3 OR More NFTs from LITM Collection* <br/>
-                        #2 Wallet HOLDS NFTs From Collection Containing All 3 Characters* 
+                    #1- Wallet Currently Holds At Least 3 NFTs from L.I.T.M. Collection <br/>
+                    #2- Wallet Holds NFTs Containing All 3 Types of ApeDad 2662: OG, 3D &amp; Pixelated 
                     </p>
+                    <div className='row' >
+                        <div className='col col-4 text-center' >
+                            <h5>O.G.</h5>
+                            <img className='w-100' src='/assets/images/char-og.jpg' alt="" />
+                        </div>
+                        <div className='col col-4 text-center' >
+                            <h5>3D</h5>
+                            <img className='w-100' src='/assets/images/char-3d.jpg' alt="" />
+                        </div>
+                        <div className='col col-4 text-center' >
+                            <h5>Pixelated</h5>
+                            <img className='w-100' src='/assets/images/char-px.jpg' alt="" />
+                        </div>
+                    </div>
+                    <div className='mt-5' >
+                        <h3>Additional Terms &amp; Conditions:</h3>
+                        <p>An 11% Creator Royalty Is Applied to All Secondary Sales </p>
+                        <p>Creator Royalties Are SHARED EQUALLY Between All Existing Royalty NFTs</p>
+                        <p>Max Supply of 101 Royalty NFTs</p>
+                        <p>Only One Royalty NFT Max Per Wallet</p>
+                        <p>L.I.T.M. NFTs Can Only Be Used Once to Mint Royalty NFT</p>
+                        <p>-No Staking Required-<br/>
+                        NFTs from Main Collection May Be Sold<br/>
+                        Immediately After Minting Royalty NFT
+                        </p>
+                        <p>
+                        Royalty NFTs are Permanently Frozen to Minting Wallet<br/>
+                        Royalty NFTs Cannot Be Sold or Transferred
+                        </p>
+                        <p>
+                        Royalty NFTs are a Free Reward For Top Collectors<br/>
+                        &amp; Entitle The Minting Wallet To Lifetime Passive Income 
+                        </p>
+                        <p>
+                        Holders of Royalty NFTs May Claim Their Share of Royalties At Any Time
+                        </p>
+                        <p></p><br/>
+                        <p><strong>Comming Soon!</strong></p>
+                        <h4>MERGED CLAIM FEATURE</h4>
+                        <p>
+                        This feature will allow 11 wallets holding Royalty NFTs 
+                        to Pool Claims together in a single automated transaction
+                        and save over 90% on gas fees to claim royalty shares. 
+                        </p>
+                    </div>
+                    <div className='mb-5 mt-4'>
+                        <button id="royalty_mint_button" className="cmn-btn">CLAIM YOUR FREE ROYALTY NFT</button>
+                    </div>
                 </div>
             </section>
 
