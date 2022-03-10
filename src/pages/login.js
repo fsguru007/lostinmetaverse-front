@@ -7,34 +7,6 @@ const Login = () => {
         <div>
             <Navbar />
             <div>
-                <div className="connect-wallet">
-                    <div className="modal fade" id="exampleModalCenter" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLongTitle">Select A Wallet To Connect To Metaverse </h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <div className="method-1">
-                                        <img src="./assets/images/metamask.png" alt="icon" />
-                                        <h6> <a href="#">MetaMask</a> </h6>
-                                    </div>
-                                    <div className="method-1">
-                                        <img src="./assets/images/ledger.jpg" alt="icon" />
-                                        <h6><a href="#">Ledger</a> </h6>
-                                    </div>
-                                    <div className="method-1">
-                                        <img src="./assets/images/trezor.jpg" alt="icon" />
-                                        <h6><a href="#">Trezor</a> </h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 {/* popup button End */}
                 <section className="login-sec-cont">
                     <div className="container bg-background">
@@ -74,8 +46,6 @@ const Login = () => {
                                     <h3>Your Accumulated Royalty Share:</h3>
                                     <h5>Claim Your ETH</h5>
                                     <h6>ETH to claim on Ethereum: <a href="#">0.00</a></h6>
-                                    <h6>WETH to claim on Polygon: <a href="#">0.00</a></h6>
-                                    <p>To claim WETH, please connect to Polygon network</p>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-12">

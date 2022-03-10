@@ -10,8 +10,12 @@ import Roadmap from '../pages/roadmap';
 import Gallery from '../pages/gallery';
 import Login from '../pages/login';
 import ScrollToTop from '../scrollTop';
+import { useEagerConnect, useInactiveListener } from '../web3s/hooks';
 
 const Routing = () => {
+    useEagerConnect();
+    useInactiveListener();
+
     return (
         <Router>
             <ScrollToTop>

@@ -4,14 +4,27 @@ import { Link } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-
+import { ConnectModal } from './connectModal';
+import useActiveWeb3React from '../web3s/hooks/useWeb3';
+import { trimAddress } from '../web3s/utils';
 const Navbar = () => {
 
     const [show, setShow] = useState(false);
 
+    const [showMenu, setShowMenu] = useState(false);
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const toggleMenu = ()=> {
+        setShowMenu(!showMenu);
+    }
+
+    const {account, deactivate} = useActiveWeb3React();
+
+    const disconnect = async () => {
+        await deactivate();
+    }
 
     return (
         <>
@@ -23,8 +36,8 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div id="head-mobile"></div>
-                    <div className="button"></div>
-                    <ul className="hdr-menu">
+                    <div className="button" onClick={toggleMenu}></div>
+                    <ul className={`hdr-menu ${showMenu?'d-block mt-5':''}`}>
                         <li class='active'>
                             <Link to="/">
                                 HOME
@@ -45,7 +58,10 @@ const Navbar = () => {
                                 GALLERY
                             </Link>
                         </li>
-                        <li><button type="button" className="connect-btn" onClick={handleShow} >CONNECT WALLET</button></li>
+                        <li>{ account?
+                            <button type="button" className="connect-btn" onClick={disconnect} ><strong>Disconnect</strong><br/><small>({trimAddress(account)})</small></button>:
+                            <button type="button" className="connect-btn" onClick={handleShow} >CONNECT WALLET</button> }
+                        </li>
                         <li>
                             <Link className='text-white connect-btn ml-2' to="/login">
                                 <FontAwesomeIcon icon={faUser} />
@@ -56,28 +72,7 @@ const Navbar = () => {
             </header>
 
             <div className="connect-wallet">
-                <Modal show={show} className="con-modal" onHide={handleClose}>
-                    <Modal.Header closeButton>
-                        <h6 className="modal-title" id="exampleModalLongTitle">Select A Wallet To Connect To Metaverse </h6>
-                        <button type="button" className="close" onClick={handleClose}>
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <div className="method-1 d-flex align-items-center pb-3">
-                            <img src="./assets/images/metamask.png" alt="icon" />
-                            <h6 className='mb-0 pl-3  fw-300'> <a href="#">MetaMask</a> </h6>
-                        </div>
-                        <div className="method-1 d-flex align-items-center pb-3">
-                            <img src="./assets/images/ledger.jpg" alt="icon" style={{borderRadius:"5px"}} />
-                            <h6 className='mb-0 pl-3  fw-300'><a href="#">Ledger</a> </h6>
-                        </div>
-                        <div className="method-1 d-flex align-items-center pb-3">
-                            <img src="./assets/images/trezor.jpg" alt="icon" style={{borderRadius:"5px"}} />
-                            <h6 className='mb-0 pl-3  fw-300'><a href="#">Trezor</a> </h6>
-                        </div>
-                    </Modal.Body>
-                </Modal>
+                <ConnectModal show={show} handleClose={handleClose} />
             </div>
 
             {/* <div className="connect-wallet">

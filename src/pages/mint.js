@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ConnectModal } from '../components/connectModal';
 import { Footer } from '../components/footer'
+import { useNftStats } from '../web3s/hooks/useNftStats';
+import useActiveWeb3React from '../web3s/hooks/useWeb3';
+import { trimAddress } from '../web3s/utils';
 
 const STARTTIME = new Date('2022-03-22T00:00:00').getTime();
 
@@ -17,6 +21,17 @@ const Mint = () => {
 
     const [timeLeft, setTimeLeft] = useState(0);
 
+    const {account, deactivate} = useActiveWeb3React();
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const disconnect = async () => {
+        await deactivate();
+    }
+
     useEffect(() => {
         const timer = setInterval(
             () => {
@@ -30,31 +45,42 @@ const Mint = () => {
         return ()=>clearInterval(timer);
     }, []);
 
+    const stats = useNftStats(account);
+
+    const [mintAmount, setMintAmount] = useState(3);
+
     return (
         <div>
             <section id="login-reg">
                 <div className="overlay pb-120">
                     <div className="container">
                         <div className="top-area mb-5">
-                            <div className="row d-flex align-items-center">
-                                <div className="col-sm-5 col">
-                                    <Link to="/">
+                            <div className="d-flex align-items-center justify-content-between">
+                                <Link to="/">
                                     <a className="back-home" href="">
                                         <img src="./assets/images/left-icon.png" alt="image" />
                                         Back To Home
                                     </a>
-                                    </Link>
-                                </div>
-                                <div className="col-sm-5 col">
-                                    <a id="joerichards_connect_wallet" href="#" className="joerichards_show_on_desktop cmn-btn mr-2">Installing...</a>
-                                    <a id="joerichards_mobile_connect_wallet" href="#" className="joerichards_hide_on_desktop cmn-btn">Connect Wallet</a>
-                                </div>
+                                </Link>
+                                {/* <a id="joerichards_connect_wallet" href="#" className="joerichards_show_on_desktop cmn-btn mr-2">Installing...</a> */}
+                                {
+                                    account?
+                                    <a className="cmn-btn d-inline-block text-center ml-3" onClick={disconnect} >
+                                        <strong>Disconnect</strong><br/><small>({trimAddress(account)})</small>
+                                    </a>
+                                    :
+                                    <a className="cmn-btn d-inline-block text-center ml-3" onClick={()=>setShow(true)}>Connect Wallet</a>
+                                }
                             </div>
                         </div>
                         {timeLeft > 0 && <h3 className='text-center text-white mt-5 pt-5' >
                             Minting will start in<br/>
                             {formatLeftTime(timeLeft)}
                         </h3>}
+
+                        <div className="connect-wallet">
+                            <ConnectModal show={show} handleClose={handleClose} />
+                        </div>
 
                         <div className="row pt-5 d-flex justify-content-center">
                             <div className="col-lg-6">
@@ -68,16 +94,18 @@ const Mint = () => {
                                             </div>
                                             <div style={{ clear: 'both' }} />
                                             <div className="form-group">
-                                                <input id="joerichards_mint_amount" style={{ textAlign: 'center', maxWidth: '150px' }} placeholder="Amount" type="text" defaultValue={2} />
+                                                <input id="mint_amount" className='mint-input' min={1} max={33-stats.balance} placeholder="Amount" type="number" value={mintAmount}
+                                                    onChange={(e)=>setMintAmount(e.target.value)}
+                                                 />
                                             </div>
                                             <div className="form-group recover pt-4">
-                                                <p style={{ textAlign: 'center' }}>Price ----------- 0.11 ETH</p>
+                                                <p className='d-flex justify-content-between mx-auto' style={{ textAlign: 'center' }}>Price ----------- {stats.price} ETH</p>
                                                 {/* <p style={{ textAlign: 'center', fontWeight: 'bold' }}>Total --------- <span id="joerichards_total_amount">0.102</span> ETH</p> */}
-                                                <p style={{ textAlign: 'center', fontWeight: 'bold' }}>Total NFTs ------- <span id="joerichards_total_amount">3</span> ETH</p>
-                                                <p style={{ textAlign: 'center', fontWeight: 'bold' }}>Total Cost --- <span id="joerichards_total_amount">0.22</span> ETH</p>
+                                                <p style={{ textAlign: 'center', fontWeight: 'bold' }}>Total NFTs ------- <span id="joerichards_total_amount">{mintAmount}</span></p>
+                                                <p style={{ textAlign: 'center', fontWeight: 'bold' }}>Total Cost --- <span id="joerichards_total_amount">{stats.price*mintAmount} ETH</span> </p>
                                             </div>
                                             <div className="form-group pt-4">
-                                                <button id="joerichards_mint_button" type="submit" className="cmn-btn">Mint 2 get 1 FREE</button>
+                                                <button id="joerichards_mint_button" type="submit" className="cmn-btn">Mint</button>
                                             </div>
                                         </form>
                                         {/* <div className="or">

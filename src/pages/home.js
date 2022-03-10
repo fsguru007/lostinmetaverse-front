@@ -16,9 +16,7 @@ const Home = () => {
       <section className="main-heading">
         <div className="container">
           <div className="heading-txt">
-            <h2>A Visionary Sci-Fi
-              <br />
-              NFT Collectible
+            <h2>A Visionary Sci-Fi<br/>NFT Collectible
             </h2>
             <Link to='/mint' className="connect-btn connect-btn-2">
               Mint Now <FontAwesomeIcon icon={faLongArrowRight} />
