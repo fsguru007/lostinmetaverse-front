@@ -8,13 +8,18 @@ export const MULTICALL = {
 };
 
 export const NFT = {
-  4: '0xD6a0988575c7cA5ea7F3a78F41E8ea54b54cD1E8',
+  4: '0x248b8F1580Def0Bf418a68730311Ef5CD8F5861F',
 }
 
 export const TYPE_HELPER = {
   4: '0x7e887938F432F336426d0F585E57859A060efC5C',
 }
 
+export const ROYALTY_DIV = {
+  4: '0x281BF073bE4BB539AB63c1538EDd9994AfEE179B',
+}
+
 export const multicallAddress = MULTICALL[CHAIN_ID];
 export const nftAddress = NFT[CHAIN_ID];
 export const typeHelperAddress = TYPE_HELPER[CHAIN_ID];
+export const royaltyAddress = ROYALTY_DIV[CHAIN_ID];

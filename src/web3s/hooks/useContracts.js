@@ -6,3 +6,13 @@ export const useMulticallContract = () => {
     return getMulticallContract();
   }, []);
 }
+
+export const useNftContract = (library) => {
+  return useMemo(() => {
+    if (library) {
+      return getNftContract(library.getSigner());
+    } else {
+      return null;
+    }
+  }, [library]);
+}
