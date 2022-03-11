@@ -127,3 +127,7 @@ button[disabled] {
   animation: rotate 1s ease 0s infinite;
   vertical-align: middle;
 }
+
+.mt-6 {
+  margin-top: 80px !important;
+}

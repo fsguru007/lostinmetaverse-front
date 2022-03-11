@@ -53,7 +53,9 @@ export const useNftStats = (account, update) => {
     balance: 0,
     totalSupply: 0,
     price: 0.11,
-    wallet: []
+    wallet: [],
+    royaltyToken: 0,
+    pendingReward: 0
   });
 
   const mc = useMulticallContract();

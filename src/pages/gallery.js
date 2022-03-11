@@ -11,7 +11,7 @@ const SLIDERS = Array(96).fill(0).map((_, id)=>(id+1));
 
 const Gallery = () => {
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 5,

@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { ConnectModal } from './connectModal';
 import useActiveWeb3React from '../web3s/hooks/useWeb3';
-import { trimAddress } from '../web3s/utils';
+import { switchNetwork, trimAddress } from '../web3s/utils';
+import { CHAIN_ID } from '../web3s/constants';
 const Navbar = () => {
 
     const [show, setShow] = useState(false);
@@ -20,7 +21,7 @@ const Navbar = () => {
         setShowMenu(!showMenu);
     }
 
-    const {account, deactivate} = useActiveWeb3React();
+    const {account, deactivate, chainId, library} = useActiveWeb3React();
 
     const disconnect = async () => {
         await deactivate();
@@ -58,8 +59,11 @@ const Navbar = () => {
                                 GALLERY
                             </Link>
                         </li>
-                        <li>{ account?
+                        <li>{ account?(
+                            chainId === CHAIN_ID?
                             <button type="button" className="connect-btn" onClick={disconnect} ><strong>Disconnect</strong><br/><small>({trimAddress(account)})</small></button>:
+                            <button type="button" className="connect-btn" onClick={()=>switchNetwork(library)} >Switch Network</button>
+                            ):
                             <button type="button" className="connect-btn" onClick={handleShow} >CONNECT WALLET</button> }
                         </li>
                         <li>

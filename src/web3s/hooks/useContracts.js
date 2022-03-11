@@ -1,5 +1,5 @@
 import { useMemo } from "react"
-import { getMulticallContract, getNftContract } from "../utils/contractHelper";
+import { getMulticallContract, getNftContract, getRoyaltyContract } from "../utils/contractHelper";
 
 export const useMulticallContract = () => {
   return useMemo(() => {
@@ -11,6 +11,16 @@ export const useNftContract = (library) => {
   return useMemo(() => {
     if (library) {
       return getNftContract(library.getSigner());
+    } else {
+      return null;
+    }
+  }, [library]);
+}
+
+export const useRoyaltyContract = (library) => {
+  return useMemo(() => {
+    if (library) {
+      return getRoyaltyContract(library.getSigner());
     } else {
       return null;
     }

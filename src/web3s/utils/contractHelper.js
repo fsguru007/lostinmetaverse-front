@@ -2,7 +2,8 @@ import { ethers } from "ethers";
 import { simpleRpcProvider } from ".";
 import multicallAbi from '../abis/multicall.json';
 import nftAbi from '../abis/LITM.json';
-import { multicallAddress, nftAddress } from "../contracts";
+import royaltyAbi from '../abis/royaltyDiv.json';
+import { multicallAddress, nftAddress, royaltyAddress } from "../contracts";
 
 
 export const getContract = (abi, address, signer = undefined) => {
@@ -16,4 +17,8 @@ export const getMulticallContract = () => {
 
 export const getNftContract = (provider) => {
   return getContract(nftAbi, nftAddress, provider);
+}
+
+export const getRoyaltyContract = (provider) => {
+  return getContract(royaltyAbi, royaltyAddress, provider);
 }

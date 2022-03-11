@@ -28,3 +28,16 @@ export const mintRoyaltyNft = async (nftContract, tokens) => {
   }
   return false;
 }
+
+export const claimReward = async (royaltyContract) => {
+  if (royaltyContract) {
+    try {
+      const tx = await royaltyContract.claim();
+      await tx.wait();
+      return true;
+    } catch(e) {
+      console.error(e);
+    }
+  }
+  return false;
+}

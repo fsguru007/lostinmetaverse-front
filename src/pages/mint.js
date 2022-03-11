@@ -6,17 +6,18 @@ import { Footer } from '../components/footer'
 import { useMulticallContract, useNftContract } from '../web3s/hooks/useContracts';
 import { fetchNftStats, useNftStats, useNftTypes } from '../web3s/hooks/useNftStats';
 import useActiveWeb3React from '../web3s/hooks/useWeb3';
-import { trimAddress } from '../web3s/utils';
+import { switchNetwork, trimAddress } from '../web3s/utils';
 import { mintNfts, mintRoyaltyNft } from '../web3s/utils/nft';
 import 'react-toastify/dist/ReactToastify.css';
 import { MintTimer } from '../components/timer';
 import { LoadingAnim } from '../components/loading';
+import { CHAIN_ID } from '../web3s/constants';
 
 const Mint = () => {
 
   const [timeLeft, setTimeLeft] = useState(0);
 
-  const { account, deactivate, library } = useActiveWeb3React();
+  const { account, deactivate, library, chainId } = useActiveWeb3React();
 
   const [show, setShow] = useState(false);
 
@@ -101,10 +102,14 @@ const Mint = () => {
                 </Link>
                 {/* <a id="joerichards_connect_wallet" href="#" className="joerichards_show_on_desktop cmn-btn mr-2">Installing...</a> */}
                 {
-                  account ?
-                    <a className="cmn-btn d-inline-block text-center ml-3" onClick={disconnect} >
-                      <strong>Disconnect</strong><br /><small>({trimAddress(account)})</small>
-                    </a>
+                  account ? (
+                    chainId === CHAIN_ID?
+                    <button type="button" className="connect-btn" onClick={disconnect} ><strong>Disconnect</strong><br/><small>({trimAddress(account)})</small></button>:
+                    <button type="button" className="connect-btn" onClick={()=>switchNetwork(library)} >Switch Network</button>
+                    )
+                    // <a className="cmn-btn d-inline-block text-center ml-3" onClick={disconnect} >
+                    //   <strong>Disconnect</strong><br /><small>({trimAddress(account)})</small>
+                    // </a>
                     :
                     <a className="cmn-btn d-inline-block text-center ml-3" onClick={() => setShow(true)}>Connect Wallet</a>
                 }
