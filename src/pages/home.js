@@ -43,7 +43,7 @@ const Home = () => {
                 <div className="col-md-6">
                   <div className="apedad-para">
                     <p>ApeDad 2662 was a typical hipster nerd working at a big tech firm until he overheard a colleague talking about a device she was working on for the Pentagon.</p>
-                    <p>2662 was meandering through the office when he heard the words “teleportation”, “time travel” and “Pentagon” echoing softly through a half open door. He couldn’t help stopping outside to listen. He heard his colleague report that the results of initial trials indicated the device could be used for time travel, teleportation or dematerialization, depending on the frequency settings. 2662 couldn’t believe his luck when she said that the lab was being moved to a new location and everything was currently packed up in the basement floor of the office.</p>
+                    <p>2662 was meandering through the office when he heard the words “teleportation”, “time travel” and “Pentagon” echoing softly through a half open door. He couldn’t help stopping outside to listen. He heard his colleague report that the results of initial trials indicated the device could be used for time travel, teleportation or dematerialization, depending on the frequency settings.<br/>2662 couldn’t believe his luck when she said that the lab was being moved to a new location and everything was currently packed up in the basement floor of the office.</p>
                   </div>
                 </div>
               </div>
@@ -60,7 +60,7 @@ const Home = () => {
               <div className="row">
                 <div className="col-md-6">
                   <div className="apedad-para">
-                    <p>2662 had often sat at his desk daydreaming about a device that could instantly whisk him away to any destination he fancied, and then back again in time to meet deadlines. He often daydreamed of traveling back to visit ancient Egypt, Socrates’ Greece or Italy during the Renaissance. The notion that this might actually be possible was simply too intriguing to just forget.</p>
+                    <p>2662 had often sat at his desk daydreaming about a device that could instantly whisk him away to any destination he fancied, and then back again in time to meet deadlines.<br/>He often daydreamed of traveling back to visit ancient Egypt, Socrates’ Greece or Italy during the Renaissance. The notion that this might actually be possible was simply too intriguing to just forget.</p>
                   </div>
                 </div>
                 <div className="col-md-6">
@@ -87,8 +87,8 @@ const Home = () => {
                 </div>
                 <div className="col-md-6">
                   <div className="apedad-para">
-                    <p>2662 instantly hatched a plan to find the device. He waited in his office until after midnight, until even the cleaning staff had left, and then ventured down to the basement. He explored the darkly lit corridor using his phone’s flashlight app, and eventually found a room filled with giant glass cases. He approached one of the cases and saw that it contained a strange type of phaser gun. </p>
-                    <p>While pondering where he would go first, a surveillance spider drone quietly crept up the case as a gang of gorilla drone soldiers suddenly appeared out of nowhere, all wielding the experimental phasers. Before 2662 even knew what was happening, they had blasted him with a field of quantum radiation.</p>
+                    <p>2662 instantly hatched a plan to find the device. He waited in his office until after midnight, until even the cleaning staff had left, and then ventured down to the basement.<br/>He explored the darkly lit corridor using his phone’s flashlight app, and eventually found a room filled with giant glass cases. He approached one of the cases and saw that it contained a strange type of phaser gun. </p>
+                    <p>While pondering where he would go first, a surveillance spider drone quietly crept up the case as a gang of gorilla drone soldiers suddenly appeared out of nowhere, all wielding the experimental phasers.<br/>Before 2662 even knew what was happening, they had blasted him with a field of quantum radiation.</p>
                   </div>
                 </div>
               </div>
@@ -192,9 +192,9 @@ const Home = () => {
               <div className="col-md-12">
                 <div className="ba-heading">
                   <h3>
-                    2662 couldn’t let go and merge completely because he wanted to find a way to share the blissful feeling of oneness.
+                    2662 couldn’t let go and merge completely<br/>because he wanted to find a way to share<br/>the blissful feeling of oneness.
                   </h3><h3>
-                    So he created a Collection with a new Meta designed to inspire unity and oneness in the Metaverse:
+                    So he created a Collection<br/>with a new Meta designed to inspire<br/>unity and oneness in the Metaverse:
                   </h3>
                 </div>
               </div>
@@ -210,7 +210,7 @@ const Home = () => {
                   <div className="apedad-cont">
                     <h3>Sharing Creator Royalties With Collectors!</h3>
                     <h6>
-                      100% of All ApeDad 2662: Lost In The Metaverse Creator Royalty Fees Are SHARED EQUALLY between holders of Royalty NFTs!
+                      100% of All ApeDad 2662: Lost In The Metaverse Creator Royalty Fees<br/>Are SHARED EQUALLY between holders of Royalty NFTs!
                     </h6>
                     <h6>
                       COLLECT ALL 3 APEDAD 2662 CHARACTERS & CLAIM YOUR FREE ROYALTY NFT!
