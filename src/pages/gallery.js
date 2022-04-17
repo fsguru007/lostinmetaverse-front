@@ -20,6 +20,10 @@ const Gallery = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Gallery</title>
+            </Helmet>
             <div>
                 <Navbar />
 

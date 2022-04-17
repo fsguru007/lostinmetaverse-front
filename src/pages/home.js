@@ -6,11 +6,30 @@ import { VideoAnim } from '../components/videoAnim';
 import Navbar from '../components/navbar';
 import { SocialIcons } from '../components/social';
 import { Footer } from '../components/footer';
+import Helmet from 'react-helmet';
 
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Visionary Sci-Fi NFT Collection on Ethereum | 1111 3D Artworks With Unique Rarity Attribute System | Original Soundtrack | Free Royalty Sharing NFTs | The Blissful Feeling of Oneness &amp; Unity</title>
+        <meta name="description" content="How Did ApeDad 2662 Become Lost In The Metaverse?
 
+...When the gorilla drone soldiers suddenly appeared and shot ApeDad 2662 with a quantum radiation frequency tuned for de-materialization, he was flattened into two dimensions, pixelated and stripped down to only his essential black and white dots. He began experiencing every possible version of himself and then suddenly disappeared completely....
+
+2662 was now everywhere and nowhere, everything and nothing, he became hopelessly lost in the fabric of the Metaverse. But rather than rage at his fate, 2662 was filled with bliss as he merged with the Metaverse.
+
+He wanted to share the blissful feeling of Oneness he discovered, so he created a new meta for metaverse sure to spread the joy of Unity: Royalty Sharing NFTs!
+
+ApeDad 2662 is a visionary, a philosopher, an inventor, and a modern-day explorer. His purpose is to explore and discover the possibilities inherent in Unity and Oneness. His latest discovery is the powerful mathematical equation: NFT + DEFI = BLISS!
+
+
+ApeDad 2662 has sent a very special message just for you:
+
+You are an Ape. You've been on a long journey in search of answers to the meaning of your existence. You've come to accept that you're nothing but a vast collection of data. You know you want to master the digital world so that you can be free to live securely in the physical world. But now you will discover a deeper truth, that the physical world is but a gateway to endless metaphysical worlds whose only limits are your imagination. So...what are you waiting for?
+" />
+      </Helmet>
       <Navbar />
 
       <section className="main-heading">
@@ -42,8 +61,8 @@ const Home = () => {
                 </div>
                 <div className="col-md-6">
                   <div className="apedad-para">
-                    <p>ApeDad 2662 was a typical hipster nerd working at a big tech firm until he overheard a colleague talking about a device she was working on for the Pentagon.</p>
-                    <p>2662 was meandering through the office when he heard the words “teleportation”, “time travel” and “Pentagon” echoing softly through a half open door. He couldn’t help stopping outside to listen. He heard his colleague report that the results of initial trials indicated the device could be used for time travel, teleportation or dematerialization, depending on the frequency settings.<br/>2662 couldn’t believe his luck when she said that the lab was being moved to a new location and everything was currently packed up in the basement floor of the office.</p>
+                    <p>ApeDad 2662 was a typical hipster nerd<br/>working at a big tech firm until<br/>he overheard a colleague talking<br/>about a device she was working on<br/>for the Pentagon.</p>
+                    <p>2662 was meandering through the office<br/>when he heard the words<br/>“teleportation”,<br/> “time travel” and “Pentagon”<br/> echoing softly through a half open door.</p><p>He couldn’t help stopping outside to listen.</p><p>He heard his colleague report<br/> that the results of initial trials indicated<br/> the device could be used for time travel,<br/> teleportation or dematerialization,<br/> depending on the frequency settings.</p><p>2662 couldn’t believe his luck<br/> when she said that the lab<br/> was being moved to a new location<br/> and everything was currently packed up<br/> in the basement floor of the office.</p>
                   </div>
                 </div>
               </div>
@@ -60,7 +79,7 @@ const Home = () => {
               <div className="row">
                 <div className="col-md-6">
                   <div className="apedad-para">
-                    <p>2662 had often sat at his desk daydreaming about a device that could instantly whisk him away to any destination he fancied, and then back again in time to meet deadlines.<br/>He often daydreamed of traveling back to visit ancient Egypt, Socrates’ Greece or Italy during the Renaissance. The notion that this might actually be possible was simply too intriguing to just forget.</p>
+                    <p>2662 had often sat at his desk daydreaming about a device that could instantly whisk him away to any destination he fancied, and then back again in time to meet deadlines.</p><p>He often daydreamed of traveling back to visit ancient Egypt, Socrates’ Greece or Italy during the Renaissance. The notion that this might actually be possible was simply too intriguing to just forget.</p>
                   </div>
                 </div>
                 <div className="col-md-6">
@@ -87,8 +106,8 @@ const Home = () => {
                 </div>
                 <div className="col-md-6">
                   <div className="apedad-para">
-                    <p>2662 instantly hatched a plan to find the device. He waited in his office until after midnight, until even the cleaning staff had left, and then ventured down to the basement.<br/>He explored the darkly lit corridor using his phone’s flashlight app, and eventually found a room filled with giant glass cases. He approached one of the cases and saw that it contained a strange type of phaser gun. </p>
-                    <p>While pondering where he would go first, a surveillance spider drone quietly crept up the case as a gang of gorilla drone soldiers suddenly appeared out of nowhere, all wielding the experimental phasers.<br/>Before 2662 even knew what was happening, they had blasted him with a field of quantum radiation.</p>
+                    <p>He instantly hatched a plan to find the device.<br/> He waited in his office until after midnight,<br/> until even the cleaning staff had left,<br/> and then ventured down to the basement.</p><p>2662 explored the darkly lit corridor<br/> using his phone’s flashlight app,<br/> and eventually found a room<br/> filled with giant glass cases.</p><p>He approached one of the cases<br/> and saw that it contained<br/> a strange type of phaser gun. </p>
+                    <p>While pondering where he would go first,<br/> a surveillance spider drone<br/> quietly crept up the case<br/> as a gang of gorilla drone soldiers<br/> suddenly appeared out of nowhere,<br/> all wielding the experimental phasers.</p><p>Before 2662 even knew what was happening,<br/> they had blasted him with a field of quantum radiation.</p>
                   </div>
                 </div>
               </div>

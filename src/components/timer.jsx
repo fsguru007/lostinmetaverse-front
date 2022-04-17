@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const STARTTIME = new Date('2022-03-22T00:00:00').getTime();
+const STARTTIME = new Date('2022-03-25Z06:11:00').getTime();
 
 const formatLeftTime = ts => {
   const days = Math.floor(ts / 86400);

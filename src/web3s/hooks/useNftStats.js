@@ -20,9 +20,13 @@ export const fetchNftStats = async (mc, account) => {
       [nftAddress, nftItf.encodeFunctionData('balanceOf', [account])],
       [nftAddress, nftItf.encodeFunctionData('totalSupply')],
       [nftAddress, nftItf.encodeFunctionData('price')],
-      [nftAddress, nftItf.encodeFunctionData('walletOf', [account])],
       [nftAddress, nftItf.encodeFunctionData('royaltyToken', [account])],
       [royaltyAddress, royaltyItf.encodeFunctionData('pendingReward', [account])],
+      [nftAddress, nftItf.encodeFunctionData('royaltySupply')],
+      [nftAddress, nftItf.encodeFunctionData('whitelistFree', [account])],
+      [nftAddress, nftItf.encodeFunctionData('whitelist88d', [account])],
+      [nftAddress, nftItf.encodeFunctionData('whitelist55d', [account])],
+      [nftAddress, nftItf.encodeFunctionData('whitelist22d', [account])],
     ]
   
     const [bn, data] = await mc.aggregate(calls);
@@ -30,19 +34,27 @@ export const fetchNftStats = async (mc, account) => {
     return {
       balance: nftItf.decodeFunctionResult('balanceOf', data[0])[0].toNumber(),
       totalSupply: nftItf.decodeFunctionResult('totalSupply', data[1])[0].toNumber(),
-      price: nftItf.decodeFunctionResult('price', data[2])[0].div(_1e16).toNumber()/100,
-      wallet: nftItf.decodeFunctionResult('walletOf', data[3])[0].map(i=>i.toNumber()),
+      price: nftItf.decodeFunctionResult('price', data[2])[0],
       royaltyToken: nftItf.decodeFunctionResult('royaltyToken', data[4])[0].toNumber(),
       pendingReward: royaltyItf.decodeFunctionResult('pendingReward', data[5])[0].div(_1e14).toNumber()/10000,
+      royaltySupply: nftItf.decodeFunctionResult('royaltySupply', data[6])[0].toNumber(),
+      whitelistFree: nftItf.decodeFunctionResult('whitelistFree', data[7])[0],
+      whitelist88d: nftItf.decodeFunctionResult('whitelist88d', data[8])[0],
+      whitelist55d: nftItf.decodeFunctionResult('whitelist55d', data[9])[0],
+      whitelist22d: nftItf.decodeFunctionResult('whitelist22d', data[10])[0],
     };
   } else {
     return {
       balance: 0,
       totalSupply: 0,
-      price: 0.11,
-      wallet: [],
+      price: ethers.utils.parseEther('0.11'),
       royaltyToken: 0,
-      pendingReward: 0
+      pendingReward: 0,
+      royaltySupply: 0,
+      whitelistFree: false,
+      whitelist88d: false,
+      whitelist55d: false,
+      whitelist22d: false,
     }
   }
 }
@@ -52,10 +64,14 @@ export const useNftStats = (account, update) => {
   const [stats, setStats] = useState({
     balance: 0,
     totalSupply: 0,
-    price: 0.11,
-    wallet: [],
+    price: ethers.utils.parseEther('0.11'),
     royaltyToken: 0,
-    pendingReward: 0
+    pendingReward: 0,
+    royaltySupply: 0,
+    whitelistFree: false,
+    whitelist88d: false,
+    whitelist55d: false,
+    whitelist22d: false,
   });
 
   const mc = useMulticallContract();

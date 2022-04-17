@@ -5,13 +5,14 @@ import { toast } from 'react-toastify';
 import { Footer } from '../components/footer'
 import { LoadingAnim } from '../components/loading';
 import Navbar from '../components/navbar'
+import { useNfts } from '../hooks/useNfts';
 import { useRoyaltyContract } from '../web3s/hooks/useContracts';
 import { useNftStats } from '../web3s/hooks/useNftStats';
 import useActiveWeb3React from '../web3s/hooks/useWeb3';
 import { claimReward } from '../web3s/utils/nft';
 
-const BASEURL = 'https://lostinthemetaverse.io/maincollectionnfts-lostinthemetaverse-io/cgi-bin/Assets/Main%20Collection%20NFT%20Images%201-1111/';
-const RBASEURL = 'https://lostinthemetaverse.io/maincollectionnfts-lostinthemetaverse-io/cgi-bin/Assets/Main%20Collection%20NFT%20Images%201-1111/';
+const BASEURL = 'https://lostinthemetaverse.io/maincollectionnfts-lostinthemetaverse-io/cgi-bin/Assets/maincollection/';
+const RBASEURL = 'https://lostinthemetaverse.io/royaltynfts-lostinthemetaverse-io/cgi-bin/Assets/RoyaltyNFTs1-101/';
 
 const Login = () => {
     const sliderSettings = {
@@ -27,6 +28,8 @@ const Login = () => {
     const {account, chainId, library} = useActiveWeb3React();
 
     const stats = useNftStats(account, chainId + updater);
+    const myNfts = useNfts(account);
+    // const myNfts = useNfts("0xe31eaf2b6797b2c342bd4a75a98c11141bf59330");
 
     const [claiming, setClaiming] = useState(false);
 
@@ -56,8 +59,8 @@ const Login = () => {
                                 <div className="login-head">
                                     <h3>Your ApeDad 2662: Lost In The Metaverse NFTs:</h3>
                                 </div>
-                                {stats.wallet.length? <Slider className='hand-made mt-6' {...sliderSettings} >
-                                    {stats.wallet.map(id => <div key={`token-${id}`} className="log-img p-2 m-0">
+                                {myNfts.length? <Slider className='hand-made mt-6' {...sliderSettings} >
+                                    {myNfts.map(id => <div key={`token-${id}`} className="log-img p-2 m-0">
                                         <img src={`${BASEURL}${id}.png`} alt="img" />
                                     </div>)}
                                 </Slider> : <p className='text-center' >You have no NFTs</p>}
@@ -72,7 +75,8 @@ const Login = () => {
                                 <div className="row">
                                     <div className="col-md-5 log-img">
                                         {stats.royaltyToken?
-                                        <img src={`${RBASEURL}${stats.royaltyToken}.png`} alt="img" />:
+                                        <img src={`${RBASEURL}${stats.royaltyToken}.gif`} alt="" />
+                                        :
                                         <p className='text-center'>You have no royalty NFT</p> }
                                     </div>
                                 </div>

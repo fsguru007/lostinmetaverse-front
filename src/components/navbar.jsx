@@ -51,7 +51,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link className='text-white' to="/roadmap">
-                                ROADMAP
+                                ROADMAP/TEAM
                             </Link>
                         </li>
                         <li>

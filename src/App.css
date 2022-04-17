@@ -131,3 +131,52 @@ button[disabled] {
 .mt-6 {
   margin-top: 80px !important;
 }
+
+.team-member {
+  margin-bottom: 20px;
+  display: flex;
+  padding: 0 2px;
+}
+
+.team-member img {
+  width: 40%;
+  height: auto;
+  max-width: 360px;
+}
+
+.team-member h4,
+.team-member h5 {
+  text-align: center;
+}
+
+.team-member h5 {
+  font-weight: 500;
+  font-family: sans-serif !important;
+}
+
+.team-member .bio {
+  background-color: #501639;
+  padding: 20px 30px;
+  flex: 1;
+  text-align: left;
+}
+.team-member .bio p {
+  font-size: 20px;
+}
+@media (max-width: 1024px) {
+  .team-member {
+    flex-direction: column;
+    max-width: 360px;
+    margin: 0 auto 20px;
+  }
+  .team-member img {
+    width: 100%;
+    max-width: none;
+  }
+  .team-member .bio {
+    padding: 20px;
+  }
+  .team-member .bio p {
+    font-size: 16px;
+  }
+}

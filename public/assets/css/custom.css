@@ -303,6 +303,14 @@ section.become-apedad{
     font-size: 18px;
     opacity: 0.8;
 }
+@media (max-width: 575px) {
+    .apedad-para p{
+        font-size: 15px;
+    }
+    .apedad-card {
+        padding: 40px 10px !important;
+    }
+}
 /* become-apedad End */
 
 
@@ -552,7 +560,7 @@ section.mint-buy{color: #fff;margin-bottom: 40%;}
 
 
 /* roadmap.html  */
-section.roadmap{margin-top: 120px;margin-bottom: 20%;position: relative;}
+section.roadmap{margin-top: 120px;margin-bottom: 180px;position: relative;}
 .roadmap-heading {color: #fff; text-align: center; margin-bottom: 50px;}
 .roadmap-heading h3{font-size: 40px;}
 
@@ -1184,6 +1192,7 @@ color:#fff;
     border-image: initial;
     border-radius: 25px;
     overflow: hidden;
+    margin-bottom: 10px;
 }
 #login-reg .login-reg-main .cmn-btn {
     width: 100%;

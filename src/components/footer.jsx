@@ -3,6 +3,12 @@ import React from "react";
 export const Footer = () => {
   return <footer>
     <div className="container">
+      <div className="text-center mb-5 pb-xl-5" >
+        <h3 className='mb-4' >Smart Contracts Audited By Solidproof.io</h3>
+        <a style={{opacity:1}} href="https://github.com/solidproof/projects/blob/main/Lost%20in%20the%20Metaverse/SmartContract_Audit_Solidproof_LITM.pdf" target="_blank">
+            <img src="/assets/images/solidproof-logo.jpg" alt="Solid Proof" width={90} />
+        </a>
+      </div>
       <div className="row">
         <div className="col-md-12">
           <div className="f-logo">

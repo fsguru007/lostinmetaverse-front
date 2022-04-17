@@ -7,11 +7,13 @@ import { useMulticallContract, useNftContract } from '../web3s/hooks/useContract
 import { fetchNftStats, useNftStats, useNftTypes } from '../web3s/hooks/useNftStats';
 import useActiveWeb3React from '../web3s/hooks/useWeb3';
 import { switchNetwork, trimAddress } from '../web3s/utils';
-import { mintNfts, mintRoyaltyNft } from '../web3s/utils/nft';
+import { mintNfts, mintRoyaltyNft, mintNftFree, mintNftsDiscounted } from '../web3s/utils/nft';
 import 'react-toastify/dist/ReactToastify.css';
 import { MintTimer } from '../components/timer';
 import { LoadingAnim } from '../components/loading';
 import { CHAIN_ID } from '../web3s/constants';
+import Helmet from 'react-helmet';
+import { ethers } from 'ethers';
 
 const Mint = () => {
 
@@ -36,24 +38,65 @@ const Mint = () => {
 
   const [mintAmount, setMintAmount] = useState(3);
 
-  const [minting, setMinting] = useState(false);
+  const [minting, setMinting] = useState(0);
 
   const nftContract = useNftContract(library);
 
   const mint = async () => {
+    if (!mintAmount) {
+      return;
+    }
     if (mintAmount > 33 - stats.balance) {
       toast.warning('You cannot mint more than 33 NFTs');
       return;
     }
-    setMinting(true);
-    const res = await mintNfts(nftContract, mintAmount, mintAmount * stats.price);
+    setMinting(1);
+    const res = await mintNfts(nftContract, mintAmount, stats.price.mul(mintAmount));
     if (res) {
       setUpdater(updater + 1);
       toast.success('Minted Successfully!');
     } else {
       toast.error('Minting Failed!');
     }
-    setMinting(false);
+    setMinting(0);
+  }
+
+  const mintWLFree = async () => {
+    setMinting(2);
+    const res = await mintNftFree(nftContract);
+    if (res) {
+      setUpdater(updater + 1);
+      toast.success('Minted Successfully!');
+    } else {
+      toast.error('Minting Failed!');
+    }
+    setMinting(0);
+  }
+
+  const mintWL = async (disc) => {
+    if (!mintAmount) {
+      return;
+    }
+    let amount = mintAmount;
+    if (disc === 88) {
+      amount = 1;
+    }
+    if (amount > 33 - stats.balance) {
+      toast.warning('You cannot mint more than 33 NFTs');
+      return;
+    }
+
+    const price = stats.price.mul(100 - disc).mul(mintAmount).div(100);
+
+    setMinting(disc);
+    const res = await mintNftsDiscounted(nftContract, amount, price, disc);
+    if (res) {
+      setUpdater(updater + 1);
+      toast.success('Minted Successfully!');
+    } else {
+      toast.error('Minting Failed!');
+    }
+    setMinting(0);
   }
 
   const [rMintable, setRMintable] = useState(false);
@@ -62,13 +105,31 @@ const Mint = () => {
 
   useEffect(() => {
     const unused = rStats.filter(i=>!i.used);
-    const token1 = unused.find(i=>i.type===1);
-    const token2 = unused.find(i=>i.type===2);
-    const token3 = unused.find(i=>i.type===3);
 
-    if (!stats.royaltyToken && token1 && token2 && token3) {
+    let found = false;
+    let token1 = 0, token2 = 0, token3 = 0;
+
+    if (unused.length >= 3 && !stats.royaltyToken) {
+      for (var i = 0; i < unused.length - 2; i++) {
+        for (var j = i+1; j < unused.length - 1; j++) {
+          for (var k = j+1; k < unused.length; k++) {
+            if ((unused[i].type | unused[j].type | unused[k].type) === 7) {
+              found = true;
+              token1 = unused[i].id;
+              token2 = unused[j].id;
+              token3 = unused[k].id;
+              break;
+            }
+          }
+          if (found) break;
+        }
+        if (found) break;
+      }
+    }
+
+    if (!stats.royaltyToken && found) {
       setRMintable(true);
-      setRMintTokens([token1.id, token2.id, token3.id]);
+      setRMintTokens([token1, token2, token3]);
     } else {
       setRMintable(false);
       setRMintTokens([0,0,0]);
@@ -89,6 +150,10 @@ const Mint = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Mint Page</title>
+      </Helmet>
       <section id="login-reg">
         <div className="overlay pb-120">
           <div className="container">
@@ -139,15 +204,40 @@ const Mint = () => {
                         />
                       </div>
                       <div className="form-group recover pt-4 mx-auto" style={{ maxWidth: 200 }} >
-                        <p className='d-flex justify-content-between' style={{ textAlign: 'center' }}><span>Price :</span> <span>{stats.price} ETH</span></p>
+                        <p className='d-flex justify-content-between' style={{ textAlign: 'center' }}><span>Price :</span> <span>{ ethers.utils.formatEther(stats.price)} ETH</span></p>
                         {/* <p style={{ textAlign: 'center', fontWeight: 'bold' }}>Total --------- <span id="joerichards_total_amount">0.102</span> ETH</p> */}
                         <p className='d-flex justify-content-between' style={{ textAlign: 'center', fontWeight: 'bold' }}><span>Total NFTs :</span> <span id="joerichards_total_amount">{mintAmount}</span></p>
-                        <p className='d-flex justify-content-between' style={{ textAlign: 'center', fontWeight: 'bold' }}><span>Total Cost :</span> <span id="joerichards_total_amount">{stats.price * mintAmount} ETH</span> </p>
+                        <p className='d-flex justify-content-between' style={{ textAlign: 'center', fontWeight: 'bold' }}><span>Total Cost :</span> <span id="joerichards_total_amount">
+                          { ethers.utils.formatEther(stats.price.mul(mintAmount || 0)) } ETH</span> </p>
                       </div>
                       <div className="form-group pt-4">
-                        <button disabled={!account || stats.balance >= 33 || minting} id="joerichards_mint_button" className="cmn-btn" onClick={mint} >
-                          {minting?<><LoadingAnim size={20} /> Please wait...</>:'Mint'}
-                        </button>
+                        { (!stats.whitelist22d && !stats.whitelist55d) && <button disabled={!account || stats.balance >= 33 || minting} id="joerichards_mint_button" className="cmn-btn" onClick={mint} >
+                          {minting==1?<><LoadingAnim size={20} /> Please wait...</>:'Mint'}
+                        </button> }
+                        {
+                          stats.whitelist55d && <div>
+                            <p><small>You're whitelisted to mint at 55% discount</small></p>
+                            <button disabled={minting} onClick={()=>mintWL(55)} className="cmn-btn">{minting==55?<><LoadingAnim size={20} /> Please wait...</>:'Mint at 55% Discount'}</button>
+                          </div>
+                        }
+                        {
+                          stats.whitelist22d && <div>
+                            <p><small>You're whitelisted to mint at 22% discount</small></p>
+                            <button disabled={minting} onClick={()=>mintWL(22)} className="cmn-btn">{minting==22?<><LoadingAnim size={20} /> Please wait...</>:'Mint at 22% Discount'}</button>
+                          </div>
+                        }
+                        {
+                          stats.whitelistFree && <div>
+                            <p><small>You're whitelisted to mint 1 ApeDad for free</small></p>
+                            <button disabled={minting} onClick={mintWLFree} className="cmn-btn">{minting==2?<><LoadingAnim size={20} /> Please wait...</>:'Mint 1 ApeDad Free'}</button>
+                          </div>
+                        }
+                        {
+                          stats.whitelist88d && <div>
+                            <p><small>You're whitelisted to mint 1 ApeDad at 88% discount</small></p>
+                            <button disabled={minting} onClick={()=>mintWL(88)} className="cmn-btn">{minting==88?<><LoadingAnim size={20} /> Please wait...</>:'Mint 1 at 88% Discount'}</button>
+                          </div>
+                        }
                       </div>
                     </form>
                     {/* <div className="or">
@@ -165,6 +255,11 @@ const Mint = () => {
                                         </div> */}
                     <div className="account">
                       <p id="txStatus" style={{ fontSize: '14px' }}>PS: Gas fee is cheaper if you mint many at once!</p>
+                    </div>
+                    <div className='stats mt-3'>
+                      <p><strong>{stats.totalSupply}</strong> / 1111 NFTs Minted</p>
+                      <p><strong>{stats.royaltySupply}</strong> / 101 Royalty NFTs Minted</p>
+                      <p></p>
                     </div>
                   </div>
                 </div>
