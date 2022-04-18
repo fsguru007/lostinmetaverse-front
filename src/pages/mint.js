@@ -14,6 +14,7 @@ import { LoadingAnim } from '../components/loading';
 import { CHAIN_ID } from '../web3s/constants';
 import Helmet from 'react-helmet';
 import { ethers } from 'ethers';
+import { useNfts } from '../hooks/useNfts';
 
 const Mint = () => {
 
@@ -34,7 +35,9 @@ const Mint = () => {
 
   const stats = useNftStats(account, updater);
 
-  const rStats = useNftTypes(stats.wallet, 0);
+  const myNfts = useNfts(account);
+
+  const rStats = useNftTypes(myNfts, 0);
 
   const [mintAmount, setMintAmount] = useState(3);
 

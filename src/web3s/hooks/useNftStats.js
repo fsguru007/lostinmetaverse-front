@@ -35,13 +35,13 @@ export const fetchNftStats = async (mc, account) => {
       balance: nftItf.decodeFunctionResult('balanceOf', data[0])[0].toNumber(),
       totalSupply: nftItf.decodeFunctionResult('totalSupply', data[1])[0].toNumber(),
       price: nftItf.decodeFunctionResult('price', data[2])[0],
-      royaltyToken: nftItf.decodeFunctionResult('royaltyToken', data[4])[0].toNumber(),
-      pendingReward: royaltyItf.decodeFunctionResult('pendingReward', data[5])[0].div(_1e14).toNumber()/10000,
-      royaltySupply: nftItf.decodeFunctionResult('royaltySupply', data[6])[0].toNumber(),
-      whitelistFree: nftItf.decodeFunctionResult('whitelistFree', data[7])[0],
-      whitelist88d: nftItf.decodeFunctionResult('whitelist88d', data[8])[0],
-      whitelist55d: nftItf.decodeFunctionResult('whitelist55d', data[9])[0],
-      whitelist22d: nftItf.decodeFunctionResult('whitelist22d', data[10])[0],
+      royaltyToken: nftItf.decodeFunctionResult('royaltyToken', data[3])[0].toNumber(),
+      pendingReward: royaltyItf.decodeFunctionResult('pendingReward', data[4])[0].div(_1e14).toNumber()/10000,
+      royaltySupply: nftItf.decodeFunctionResult('royaltySupply', data[5])[0].toNumber(),
+      whitelistFree: nftItf.decodeFunctionResult('whitelistFree', data[6])[0],
+      whitelist88d: nftItf.decodeFunctionResult('whitelist88d', data[7])[0],
+      whitelist55d: nftItf.decodeFunctionResult('whitelist55d', data[8])[0],
+      whitelist22d: nftItf.decodeFunctionResult('whitelist22d', data[9])[0],
     };
   } else {
     return {
