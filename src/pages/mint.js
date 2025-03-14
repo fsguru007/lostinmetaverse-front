@@ -168,16 +168,12 @@ const Mint = () => {
                     Back To Home
                   </a>
                 </Link>
-                {/* <a id="joerichards_connect_wallet" href="#" className="joerichards_show_on_desktop cmn-btn mr-2">Installing...</a> */}
                 {
                   account ? (
                     chainId === CHAIN_ID?
                     <button type="button" className="connect-btn" onClick={disconnect} ><strong>Disconnect</strong><br/><small>({trimAddress(account)})</small></button>:
                     <button type="button" className="connect-btn" onClick={()=>switchNetwork(library)} >Switch Network</button>
                     )
-                    // <a className="cmn-btn d-inline-block text-center ml-3" onClick={disconnect} >
-                    //   <strong>Disconnect</strong><br /><small>({trimAddress(account)})</small>
-                    // </a>
                     :
                     <a className="cmn-btn d-inline-block text-center ml-3" onClick={() => setShow(true)}>Connect Wallet</a>
                 }
@@ -243,19 +239,6 @@ const Mint = () => {
                         }
                       </div>
                     </form>
-                    {/* <div className="or">
-                                            <p>OR</p>
-                                        </div>
-                                        <div className="sign-in">
-                                            <p>Mint with Credit Card</p>
-                                        </div> */}
-                    {/* <div className="reg-with">
-                                            <div className="social-area d-flex justify-content-center">
-                                                <a className="master checkout-button" href="#"><img src="./assets/images/mc_symbol.svg" alt="image" /></a>
-                                                <a className="visa checkout-button" href="#"><img src="./assets/images/Visa_Brandmark_White_RGB_2021.png" alt="image" /></a>
-                                                <a className="amex checkout-button" href="#"><img src="./assets/images/amex.png" alt="image" /></a>
-                                            </div>
-                                        </div> */}
                     <div className="account">
                       <p id="txStatus" style={{ fontSize: '14px' }}>PS: Gas fee is cheaper if you mint many at once!</p>
                     </div>
